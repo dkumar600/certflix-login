@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon/Fakeflix_favicon_64.ico" type="image/x-icon">
+
+    <title>Fakeflix-login</title>
+    <style>
+        body{
+            display:flex;
+            font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+            margin:0;
+            padding: 0;
+            background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/f1c3c4eb-2fea-42c7-9ebd-1c093bd8a69d/9c9af369-7a8c-4c8f-8e4a-d6c9d655f713/IN-en-20230403-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+        }
+        main{
+            height:100vh;
+            width:100vw;
+            background-color: rgba(0,0,0,0.6);
+        }
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            height: 590px;
+            position: fixed;
+            top:0;
+            margin:80px auto;
+            padding: 60px 68px 40px;
+            width:450px;
+            box-sizing: border-box;
+            background-color: rgba(0,0,0,0.52);
+            border-radius: 4px;
+            font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+            
+        }
+        h2{
+            margin:0;
+            font-size: 32px;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+        .login-int{
+            width:100%;
+            padding: 16px;
+            border-radius: 5px;
+            margin: 0;
+            box-sizing: border-box ;
+            background-color: #333;
+            border: 0;
+            font-size: 16px;
+            color:#fff;
+            outline-style: none;
+        }
+        .login-but{
+            width:100%;
+            padding: 16px;
+            border-radius: 5px;
+            margin-bottom:10px;
+            margin-top: 35px;
+            box-sizing: border-box ;
+            border: 0;
+            font-size: 16px;
+            background-color: #e50914;
+            color:#fff;
+            font-weight: 500;
+            font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+            cursor: pointer;
+        }
+        #Fill-14{
+            fill:#e50914;
+            height:45px;
+            width:167px;
+        }
+        .logo{
+            position: absolute;
+            top:0;
+            left:0;
+            margin-left:35px;
+            display: flex;
+            height:80px;
+            align-items: center;
+        }
+        .check{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width:100%;
+            color:#b3b3b3;
+            font-size:14px;
+        }
+        .check input[type=checkbox]{
+            padding:0 ;
+            margin-left: 0;
+        }
+        .check a{
+            text-decoration: none;
+            color:#b3b3b3;
+        }
+        .check a:hover{
+            text-decoration: underline;
+        }
+        .sign-up{
+            margin-top:50px;
+            font-size: 16px;
+            color:#737373;
+        }
+        .sign-up a{
+            text-decoration: none;
+            color:#fff;
+        }
+        .sign-up a:hover{
+            text-decoration: underline;
+        }
+        .extra{
+            margin-top: 15px;
+            font-size: 14px;
+            color:#737373;
+        }
+        .extra a{
+            text-decoration: none;
+        }
+        .username3{
+            color:#e87c03;
+            margin-bottom:20px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+        .username3 input{
+            display: flex;
+            flex-direction: column;
+            width:100%;
+            padding: 16px;
+            border-radius: 5px;
+            box-sizing: border-box ;
+            background-color: #333;
+            border: 0;
+            font-size: 16px;
+            color:#fff;
+            outline-style: none;
+        }
+        #hide, #hide1{
+            display: none;
+            margin: 6px 0;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="logo"><img src="https://cdn.jsdelivr.net/gh/Th3Wall/assets-cdn/Fakeflix/Fakeflix_logo.png" height="48px" alt=""></div>
+        <section id="first" onblur="">
+        </section>
+    </main>
+    <script>
+        let sect = document.getElementById("first");
+        let node1 = document.createElement("form");
+        sect.appendChild(node1);
+        let node2 = document.createElement("h2");
+        node2.append("Sign In");
+        node1.appendChild(node2);
+        let node3_1 = document.createElement("span");
+        node3_1.setAttribute("class","username3")
+        let node3 = document.createElement("input");
+        node3_1.appendChild(node3);
+        node3.setAttribute("type","text");
+        node3.setAttribute("id","username");
+        node3.setAttribute("onblur","invalidIn1()")
+        node3.setAttribute("placeholder","Email or Phone Number");
+        node3.setAttribute("class","login-int");
+        node1.appendChild(node3_1);
+        let node4_1 = document.createElement("span");
+        node4_1.setAttribute("class","username3")
+        let node4 = document.createElement("input");
+        node4.setAttribute("id","pswd");
+        node4.setAttribute("type","text");
+        node4.setAttribute("onblur","invalidIn2()");
+        node4.setAttribute("placeholder","Password");
+        node4.setAttribute("class","login-int");
+        node4_1.appendChild(node4);
+        node1.appendChild(node4_1);
+        let node5 = document.createElement("input");
+        node5.setAttribute("type","submit");
+        node5.setAttribute("value","Sign In");
+        node5.setAttribute("class","login-but");
+        node1.appendChild(node5);
+        let node6 = document.createElement("span");
+        node6.setAttribute("class","check")
+        let node7 = document.createElement("span");
+        node6.appendChild(node7);
+        let node8 = document.createElement("input");
+        node8.setAttribute("type","checkbox");
+        node8.setAttribute("id","right");
+        node7.appendChild(node8);
+        let node9 = document.createTextNode("Remember me");
+        node7.appendChild(node9);
+        let node10 = document.createElement("a");
+        node10.setAttribute("href","#");
+        node10.appendChild(document.createTextNode("Need help?"));
+        node6.appendChild(node10);
+        node1.appendChild(node6);
+        let node11 = document.createElement("span");
+        node1.appendChild(node11);
+        node11.setAttribute("class","sign-up");
+        node11.appendChild(document.createTextNode("New to Fakeflix?"));
+        let node12 = document.createElement("a")
+        node12.setAttribute("href","#");
+        node12.appendChild(document.createTextNode(" Sign up now"));
+        node11.appendChild(node12);
+        node11.append(".");
+        let node13 =  document.createElement("span");
+        node1.appendChild(node13);
+        node13.setAttribute("class","extra");
+        node13.append("This page is protected by Google reCAPTCHA to ensure you're not a bot. ");
+        let node14 = document.createElement("a")
+        node14.setAttribute("href","#");
+        node14.appendChild(document.createTextNode("Learn more"));
+        node13.appendChild(node14);
+        node13.append(".");
+        let node15 = document.createElement("p");
+        node3_1.appendChild(node15);
+        node15.setAttribute("id","hide");
+        node15.append("Please enter a valid email address or phone number.");
+        let node16 = document.createElement("p");
+        node4_1.appendChild(node16);
+        node16.setAttribute("id","hide1");
+        node16.append("Your password must contain between 4 and 60 characters.");
+        let n1 = 0;
+        let n2 = 0;
+        function invalidIn1(){
+            let userName = document.getElementById("username").value;
+            n1 = 1
+            if(userName==""){
+                let n = document.getElementById("hide");
+                n.style.display = "block";
+                document.getElementById("username").style.borderBottom = "2px solid #e87c03";
+            }
+            else if(userName.length<4 || userName.length>=60){
+                let j = document.getElementById("hide");
+                j.style.display = "block";
+                document.getElementById("username").style.borderBottom = "2px solid #e87c03";
+            }
+            else{
+                let n = document.getElementById("hide");
+                n.style.display = "none";
+                document.getElementById("username").style.borderBottom = "none";
+            }
+            userName = document.getElementById("username");
+            if(n1==1){
+            userName.oninput = function() {
+                if(userName.value.length<=4){
+                    let n = document.getElementById("hide");
+                    n.style.display = "block";
+                    document.getElementById("username").style.borderBottom = "2px solid #e87c03";
+                }
+                
+                else{
+                    let n = document.getElementById("hide");
+                    n.style.display = "none";
+                    document.getElementById("username").style.borderBottom = "none";
+                }
+            }
+        }
+        }
+        
+        function invalidIn2(){
+            let pswd = document.getElementById("pswd").value;
+            n2=1;
+            if(pswd == ""){
+                let j = document.getElementById("hide1");
+                j.style.display = "block";
+                document.getElementById("pswd").style.borderBottom = "2px solid #e87c03";
+
+            }
+            else if(pswd.length<4 || pswd.length>=60){
+                let j = document.getElementById("hide1");
+                j.style.display = "block";
+                document.getElementById("pswd").style.borderBottom = "2px solid #e87c03";
+            }
+            else{
+                let j = document.getElementById("hide1");
+                j.style.display = "none";
+                document.getElementById("pswd").style.borderBottom = "none";
+            }
+            let pswd1 = document.getElementById("pswd");
+            if(n2==1){
+                pswd1.oninput = function(){
+                    console.log(pswd1.value.length);
+                    if(pswd1.value.length<4 || pswd1.value.length>=60){
+                        let j = document.getElementById("hide1");
+                        j.style.display = "block";
+                        document.getElementById("pswd").style.borderBottom = "2px solid #e87c03";
+                    }
+                    else{
+                        let j = document.getElementById("hide1");
+                        j.style.display = "none";
+                        document.getElementById("pswd").style.borderBottom = "none";
+                    }
+                }
+            }
+            console.log()
+        }
+    </script>
+</body>
+</html>
